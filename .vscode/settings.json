@@ -1,9 +1,9 @@
 {
+  "ruby.useBundler": true,
   "ruby.useLanguageServer": true,
   "ruby.lint": {
-    "standard": true,
-    "useBundler": true
+    "rubocop": false,
+    "standard": true
   },
-  "ruby.intellisense": "rubyLocate",
   "ruby.format": "standard",
 }

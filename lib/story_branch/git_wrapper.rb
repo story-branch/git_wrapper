@@ -29,7 +29,7 @@ module StoryBranch
       # allow <- local branch (do nothing)
       regex = %r{(^remotes/.*/|\s|[*])}
       all_branches.map do |line|
-        line = line.sub(regex, '')
+        line = line.sub(regex, "")
         line
       end
     end
@@ -38,19 +38,19 @@ module StoryBranch
       current_branch_line = all_branches.detect do |line|
         line.match(/\*/)
       end
-      current_branch_line.tr('*', ' ').strip
+      current_branch_line.tr("*", " ").strip
     end
 
     def self.all_branches
-      command_lines('branch', '-a')
+      command_lines("branch", "-a")
     end
 
     def self.create_branch(name)
-      command('checkout', ['-b', name])
+      command("checkout", ["-b", name])
     end
 
     def self.status
-      g_status = command_lines('status', '-s')
+      g_status = command_lines("status", "-s")
       return nil if g_status.empty?
 
       {
@@ -67,11 +67,11 @@ module StoryBranch
     end
 
     def self.commit(message)
-      command('commit', ['-m', message])
+      command("commit", ["-m", message])
     end
 
     def initialize
-      @system_git = 'git'
+      @system_git = "git"
     end
 
     def call(cmd, opts = [])
@@ -83,17 +83,17 @@ module StoryBranch
     private
 
     # NOTE: Taken from ruby git gem
-    def escape(str = '')
+    def escape(str = "")
       str = str.to_s
-      return "'#{str.gsub('\'', '\'"\'"\'')}'" if RUBY_PLATFORM !~ /mingw|mswin/
+      return "'#{str.gsub("\'", '\'"\'"\'')}'" if /mingw|mswin/.match?(RUBY_PLATFORM)
 
       # Keeping the old escape format for windows users
-      escaped = str.gsub('\'', '\'\\\'\'')
+      escaped = str.gsub("\'", "\'\\\'\'")
       %("#{escaped}")
     end
 
     def prepare_opts(opts = [])
-      [opts].flatten.map { |s| escape(s) }.join(' ')
+      [opts].flatten.map { |s| escape(s) }.join(" ")
     end
   end
 end
