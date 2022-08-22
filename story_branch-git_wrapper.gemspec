@@ -1,14 +1,14 @@
-require_relative "lib/story_branch/git_wrapper/version"
+require_relative "lib/story_branch/git/version"
 
 Gem::Specification.new do |spec|
   spec.name = "story_branch-git_wrapper"
-  spec.version = StoryBranch::GitWrapper::VERSION
+  spec.version = StoryBranch::Git::VERSION
   spec.authors = ["Rui Baltazar"]
   spec.email = ["rui.p.baltazar@gmail.com"]
 
-  spec.summary = "GitWrapper to help running git commands with direct system calls"
+  spec.summary = "Git::Wrapper to help running git commands with direct system calls"
   spec.description = <<~DESCRIPTION
-    GitWrapper provides a series of commands that wrap actual git commands and processes the output
+    Git::Wrapper provides a series of commands that wrap actual git commands and processes the output
   DESCRIPTION
   spec.homepage = "https://github.com/story-branch/git_wrapper"
   spec.license = "MIT"
