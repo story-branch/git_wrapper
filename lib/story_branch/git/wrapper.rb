@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'byebug'
-
 module StoryBranch
   module Git
     class Error < StandardError; end
